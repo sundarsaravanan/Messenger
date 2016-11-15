@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Chat</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="icon" href="images/say.png" type="image/png" >
+    <script type="text/javascript" src="js/users.js" ></script>
+    <script type="text/javascript" src="js/msg.js" ></script>
+</head>
+<body onload="userlist();" >
+    <div class="container-fluid" >
+        <div class="row" stye="background-color:#00a0a8;">
+            <div class="col-lg-3" class="logo" ><img src="images/say.png">
+            </div>
+            <div class="col-lg-1 col-lg-offset-5" >
+            </div>
+            <div class="col-lg-1" ><button onclick="window.location='php/logout.php'" ><b>Logout</b></button>
+            </div>
+            <div class="col-lg-1" ><button onclick="window.location='php/logout.php'" ><b>go offline</b></button>
+            </div>
+            <div class="col-lg-1" ><button onclick="window.location='upload.html'" ><b>settings</b></button>
+            </div>
+        </div>
+        <div class="row" id="slot" >
+            <div  class="col-lg-3 " id="users_slot">
+              <div id="users"></div>
+              <!--<div class="row">
+                <div id="profile"class="col-lg-12">
+                  <div class="row" id="cont">
+                    <div id="profileimg" class="col-lg-3"></div>
+                    <div class="col-lg-4"><h4>S.Sundar</h4></div>
+                    <div class="col-lg-1 status"></div>
+            </div>
+    </div>
+              </div>-->
+            </div>
+            <div class="col-lg-9" id="msg_slot">
+                <div class="row" id="msg_box">
+                    <div id="message_div" class="col-lg-12 main_area">
+                        <ul id="mes_ul"></ul>
+                    </div>
+                </div>
+                <div class="row" id="but_part">
+
+                    <input type="text" id="message" class="col-lg-11" placeholder="New Message...">
+                    <button type="submit" id="msg_sub" class="col-lg-1"  onclick="new_message();">
+                      <span id="sendicon" class="glyphicon glyphicon-send" aria-hidden="true"style="font-size:30px;"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/others.js" ></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

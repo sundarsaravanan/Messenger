@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Chat</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/front.css">
+
+</head>
+
+<body style="background-color:white">
+
+    <div class="row" style="background-color:white">
+
+    <div class="col-lg-8 col-lg-offset-4" style="background-color:white">
+      <h2>Sign In</h2>
+      <form action="php/login.php" method="post" >
+            <input type="text" class="textox" placeholder="Username or Phone" name="sign_name" >
+						<input type="text" placeholder="Password" name="sign_pass" class="textox"><br>
+            <input type="checkbox">Remember Me<br>
+            <input type="submit" value="Sign In" >
+          </form>
+        </div>
+    </div>
+        <div class="row"><div class="col-lg-8 col-lg-offset-4"><h2>Create Account</h2>
+          <form action="php/register.php" method="post" >
+
+                <div class="row"><div class="col-lg-12"><input type="text" class="textox" placeholder="Name" name="name"></div></div>
+                <div class="row"><div class="col-lg-12"><input type="text" class="textox" placeholder="Username" name="usname"></div></div>
+                <div class="row"><div class="col-lg-12"><input type="text" class="textox" placeholder="Password" name="pass"></div></div>
+                <div class="row"><div class="col-lg-12"><input type="text" class="textox" placeholder="Confirm Password" name="conf"></div></div>
+                <div class="row"><div class="col-lg-12"><input type="text" class="textox" placeholder="Email Id" name="email"></div></div>
+                <div class="row"><div class="col-lg-12"><input type="text" class="textox" placeholder="Phone" name="phone"></div></div>
+                <div class="row"><div class="col-lg-12"><input type="submit" value="Register" >
+
+								</div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="js/front.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

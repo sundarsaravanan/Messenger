@@ -1,0 +1,281 @@
+#sendicon:hover{
+    color:#5600ff;
+}
+
+#profile:hover{
+        transform: scale(1.05, 1.05);
+}
+
+#profile{
+        transition: all .2s ease-in-out;
+        background-color:#5600ff;
+        border-radius:50px;
+        height:70px;
+        margin-bottom:20px;
+        -webkit-box-shadow: 1px 3px 15px 2px rgba(0,0,0,0.4);
+      -moz-box-shadow: 1px 3px 15px 2px rgba(0,0,0,0.4);
+      box-shadow: 1px 3px 15px 2px rgba(0,0,0,0.4);
+}
+#profileimg{
+  background-image:url("../images/pro.jpeg");
+}
+
+.status{
+background-color:green;
+height:20px;
+width:20px;
+border-radius:20px;
+margin-top:20px;
+}
+
+#count{
+background-color:transparent;
+color:white;
+height:20px;
+width:20px;
+border-radius:0px;
+margin-top:20px;
+}
+#typing{
+  color:white;
+  background-color:transparent;
+  height:20px;
+  width:50px;
+  border-radius:0px;
+  margin-top:20px;
+}
+
+body{
+  padding-top:0px;
+  background-color:#00a0a8;
+}
+
+.starter-template
+{
+  padding:40px 15px;
+  text-align:center;
+}
+
+.logo{
+  height:auto;width:auto;border-radius:100px;margin-left:50px;margin-top:10px;margin-bottom:10px;
+}
+
+.logout{
+  outline:none;font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+border: 2px #f05f40 solid;
+border-radius: 10px;
+font-weight: 900;
+color: white;
+text-transform: uppercase;    background-color: #f05f40;
+padding: 6px 12px;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.42857143;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+
+cursor: pointer;                margin-top:20px;margin-left:170px; -webkit-box-shadow: 1px 3px 8px 1px rgba(0,0,0,0.4);
+-moz-box-shadow: 1px 3px 8px 1px rgba(0,0,0,0.4);
+box-shadow: 1px 3px 8px 1px rgba(0,0,0,0.4);
+}
+
+#profileimg{
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius:80px;
+  height:65px;
+  width:65px;
+  margin-left:2.5px;
+  margin-top:2.5px;
+}
+
+
+
+
+
+#message_div{
+  height:630px;
+  background-color:transparent;
+  border-radius:30px;
+  overflow-y:auto;
+  padding-top:20px;
+  padding-right:20px;
+}
+
+
+
+#message_div ul
+{
+    padding: 0px;
+    list-style-type: none;
+}
+
+#message_div ul li
+{
+    height: auto;
+    margin-bottom: 10px;
+    clear: both;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+}
+
+#message_div ul li span
+{
+    display: inline-block;
+    max-width: 550px;
+    background-color: blue;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    margin-bottom: 20px;
+}
+
+#message_div ul li span.left
+{
+    float: left;
+}
+
+#message_div ul li span.left:after
+{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: -8.5px;
+    top: 7px;
+    height: 0px;
+    width: 0px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid blue;
+}
+
+#message_div ul li span.left:before
+{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: -9px;
+    top: 7px;
+    height: 0px;
+    width: 0px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid transparent;
+}
+
+#message_div ul li span.right:after
+{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: -8px;
+    top: 6px;
+    height: 0px;
+    width: 0px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid red;
+}
+
+#message_div ul li span.right:before
+{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: -9px;
+    top: 6px;
+    height: 0px;
+    width: 0px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid red;
+}
+
+#message_div ul li span.right
+{
+    float: right;
+    background-color: red;
+}
+
+
+#slot{
+  height:730px;
+  background-color:transparent;
+  padding-left:40px;
+  padding-right:20px;
+  margin-top:0px;
+}
+
+#user_slot{
+  height:700px;
+  background-color:#00a0a8;
+  padding-left:20px;
+  padding-right:70px;
+  overflow-y:auto;
+  padding-top:20px;
+
+}
+
+#msg_slot{
+  height:700px;
+  background-color:#aeabff;
+  border-radius:30px;
+  padding-left:40px;
+  -webkit-box-shadow: 1px 3px 15px 2px rgba(0,0,0,0.4);
+-moz-box-shadow: 1px 3px 15px 2px rgba(0,0,0,0.4);
+box-shadow: 3px 5px 20px 2px rgba(0,0,0,0.4);
+}
+
+#msg_box{
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:2px;
+}
+
+
+#but_part{
+  padding-left:40px;
+  padding-right:40px;
+  padding-top:10px;
+}
+
+.block{
+  height:20px;
+  width:20px;
+  border-radius:20px;
+  margin-top:20px;
+}
+
+#msg_sub{
+  height:auto;
+  width:auto;
+  margin-left:10px;
+  background-color:transparent;
+  outline:none;
+  border:none;
+}
+
+#message{
+  outline:none;
+  height:40px;
+  margin-right:0px;
+  border-radius:20px;
+}
