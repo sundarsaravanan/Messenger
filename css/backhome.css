@@ -34,7 +34,25 @@ body{
 
 
 
+.logout{
+outline:none;font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+border: 2px #f05f40 solid;
+border-radius: 10px;
+font-weight: 900;
+color: white;
+text-transform: uppercase;    background-color: #f05f40;
+padding: 6px 12px;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.42857143;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
 
+cursor: pointer;                margin-top:20px;margin-left:170px; -webkit-box-shadow: 1px 3px 8px 1px rgba(0,0,0,0.4);
+-moz-box-shadow: 1px 3px 8px 1px rgba(0,0,0,0.4);
+box-shadow: 1px 3px 8px 1px rgba(0,0,0,0.4);
+}
 
 #profileimg{
   background-repeat: no-repeat;
@@ -46,10 +64,14 @@ body{
   margin-top:2.5px;
 }
 
+
+
+
+
 #message_div{
-  height:610px;
+  height:630px;
   background-color:transparent;
-  border-radius:10px;
+  border-radius:30px;
   overflow-y:auto;
   padding-top:20px;
   padding-right:20px;
@@ -73,8 +95,12 @@ body{
     overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
   word-break: break-all;
+  /* Instead use this non-standard one: */
   word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
@@ -164,7 +190,13 @@ body{
 }
 
 
-
+#slot{
+  height:730px;
+  background-color:transparent;
+  padding-left:40px;
+  padding-right:20px;
+  margin-top:0px;
+}
 
 #user_slot{
   height:700px;
@@ -178,8 +210,8 @@ body{
 
 #msg_slot{
   height:680px;
-  background-color:#ffffff;
-  border-radius:10px;
+  background-color:#aeabff;
+  border-radius:30px;
   padding-left:40px;
   margin-top: 20px;
   overflow: hidden;
@@ -196,9 +228,9 @@ box-shadow: 3px 5px 20px 2px rgba(0,0,0,0.4);
 
 
 #but_part{
-  padding-left:0px;
-  padding-right:0px;
-  padding-top:0px;
+  padding-left:40px;
+  padding-right:40px;
+  padding-top:10px;
 }
 
 .block{
@@ -211,7 +243,7 @@ box-shadow: 3px 5px 20px 2px rgba(0,0,0,0.4);
 #msg_sub{
   height:auto;
   width:auto;
-  margin-left:0px;
+  margin-left:10px;
   background-color:transparent;
   outline:none;
   border:none;
@@ -221,5 +253,5 @@ box-shadow: 3px 5px 20px 2px rgba(0,0,0,0.4);
   outline:none;
   height:40px;
   margin-right:0px;
-  border-radius:0px;
+  border-radius:20px;
 }

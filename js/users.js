@@ -36,7 +36,6 @@ xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(parameters);
 
-document.getElementById("mes_ul").innerHTML="<h1>Select anyone</h1>";
 document.getElementById("but_part").style.display="none";
 }
 
@@ -55,7 +54,7 @@ tot++;
   var userid="user".concat(x[i+3]);
   e.innerHTML='<div id="profile" class="col-lg-12">\
                 <div class="row" id="">\
-                  <div id="profileimg" class="col-lg-3" style="background-image:url(images/'+x[i+1]+');" ></div>\
+                  <div id="profileimg" class="col-lg-3" style="background-image:url(./php/uploads/'+x[i+1]+');" ></div>\
                   <div class="col-lg-4 "  ><h4>'+x[i]+'</h4></div>\
                   <div class="col-lg-1 status" id="'+userid+'" style="background-color:'+bg+';"></div>\
                 </div>\

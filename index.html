@@ -21,10 +21,10 @@
       <h2 class="page-header">Login</h2>
             <form action="php/login.php" method="post" >
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" name="sign_name">
+                <input type="text" class="form-control" placeholder="Username" name="sign_name" required>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" name="sign_pass">
+                <input type="password" class="form-control" placeholder="Password" name="sign_pass" required>
               </div>
               <input type="submit" class="btn btn-primary" value="Sign In">
                 </form>
@@ -34,22 +34,22 @@
       <form action="php/register.php" method="post" >
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Name" name="name">
+          <input type="text" class="form-control" placeholder="Name" name="name" required>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control"  placeholder="Username" name="usname">
+          <input type="text" class="form-control"  placeholder="Username" name="usname" required>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control"  placeholder="Password" name="pass">
+          <input type="password" class="form-control"  placeholder="Password" name="pass" required>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control"  placeholder="Confirm" name="conf">
+          <input type="password" class="form-control"  placeholder="Confirm" name="conf" required>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control"  placeholder="Email" name="email">
+          <input type="text" class="form-control"  placeholder="Email" name="email" required>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control"  placeholder="Phone" name="phone">
+          <input type="text" class="form-control"  placeholder="Phone" name="phone" required>
         </div>
         <input type="submit" class="btn btn-primary" value="Register">
     </div>
