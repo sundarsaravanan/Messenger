@@ -28,7 +28,7 @@ if(isset($_FILES['file'])){
 								$result = mysqli_query($dbcon, $query)
 								or die('Error querying database.');
 								mysqli_close($dbcon);
-							header("Location:../home.html");}
+							header("Location:../home.php");}
 else {
 echo "failed";
 }

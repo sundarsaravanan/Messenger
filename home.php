@@ -1,3 +1,7 @@
+<?php
+session_start();
+$pro=$_SESSION['profile'];
+?>
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -20,13 +24,14 @@
   <div class="navbar navbar-default ">
       <div class="container">
         <div class="navbar-header">
-          <a href="#" class="navbar-brand">Chat</a>
+          <a href="#" class="navbar-brand">Messenger</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
         </div>
+
         <div class="navbar-collapse collapse" id="navbar-main">
 
 
@@ -34,6 +39,9 @@
             <li onclick="statToggle();"><a id="log">Go Offline</a></li>
             <li onclick="window.location='upload.html'"><a>Settings</a></li>
             <li onclick="logoff();"><a>Logout</a></li>
+            <li>
+                <div id="profileimg" class="col-lg-3" style="margin-left:20px;background-image:url(./php/uploads/<?php echo $pro;?>);"></div>
+          </li>
           </ul>
 
         </div>
@@ -41,6 +49,7 @@
     </div>
 
     <div class="container-fluid" >
+
       <div class="row">
         <div class="col-lg-3 col-lg-offset-1" id="user_slot">
           <div id="users"></div>
@@ -63,11 +72,16 @@
           </div>-->
 </div>
 
+
         <div class="col-lg-6 col-lg-offset-1" id="msg_slot">
 
               <div class="row" id="msg_box">
+                
                   <div id="message_div" class="col-lg-12 main_area">
+
+
                       <ul id="mes_ul">
+
                         <center><span id="sendicon" class="glyphicon glyphicon-user" aria-hidden="true"style="font-size:100px;margin-top:220px"></span>
                         <h3>Choose User</h3></center>
                     </ul>
