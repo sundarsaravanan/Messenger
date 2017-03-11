@@ -13,8 +13,10 @@
     <link rel="icon" href="images/say.png" type="image/png" >
     <script type="text/javascript" src="js/users.js" ></script>
     <script type="text/javascript" src="js/msg.js" ></script>
+    <script type="text/javascript" src="js/others.js" ></script>
+
 </head>
-<body onload="userlist();" style="background-color:#71716F">
+<body onload="userlist();" onbeforeunload="loadoff()" style="background-color:#71716F">
   <div class="navbar navbar-default ">
       <div class="container">
         <div class="navbar-header">
@@ -29,9 +31,9 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li onclick="window.location='php/logout.php'"><a>Go Offline</a></li>
+            <li onclick="statToggle();"><a id="log">Go Offline</a></li>
             <li onclick="window.location='upload.html'"><a>Settings</a></li>
-            <li onclick="window.location='php/logout.php'"><a>Logout</a></li>
+            <li onclick="logoff();"><a>Logout</a></li>
           </ul>
 
         </div>
@@ -72,7 +74,6 @@
                   </div>
               </div>
               <div class="row" id="but_part">
-
                   <input type="text" id="message" class="col-lg-11" placeholder="New Message...">
                   <button type="submit" id="msg_sub" onclick="new_message();">
                   <span id="sendicon" class="glyphicon glyphicon-send" aria-hidden="true" style="font-size:30px;"></span>
@@ -81,22 +82,6 @@
         </div>
       </div>
     </div>
-
-        <!--<div class="row" id="slot" >
-            <div  class="col-lg-3 " id="users_slot">
-
-              <div class="row">
-                <div id="profile"class="col-lg-12">
-                  <div class="row" id="cont">
-                    <div id="profileimg" class="col-lg-3"></div>
-                    <div class="col-lg-4"><h4>S.Sundar</h4></div>
-                    <div class="col-lg-1 status"></div>
-            </div>
-    </div>
-              </div>
-            </div>-->
-
-
     <script type="text/javascript" src="js/others.js" ></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

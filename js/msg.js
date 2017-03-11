@@ -15,6 +15,9 @@ function GetXmlHttpObject()
 
 function new_message() {
   var msg=document.getElementById("message").value;
+  if(msg==''){
+    return false;
+  }
   var to_id=localStorage.getItem("to_id");
   var e=document.createElement("li");
   e.innerHTML="<span class='right'>"+msg+"</span>\

@@ -20,6 +20,7 @@ function logoff()
             alert ("Your browser does not support AJAX!");
             return;
       }
+      localStorage.clear();
 var url="php/logout.php";
 xmlhttp.onreadystatechange=function(){
     if (xmlhttp.readyState==4 && xmlhttp.status == 200)
@@ -29,16 +30,17 @@ xmlhttp.onreadystatechange=function(){
 }
 xmlhttp.open("GET",url,true);
 xmlhttp.send(null);
+window.location="index.html";
 }
-/*
-function offline()
+
+function loadoff()
 {
       if (xmlhttp==null)
       {
             alert ("Your browser does not support AJAX!");
             return;
       }
-var url="php/line.php";
+var url="php/logoutstat.php";
 xmlhttp.onreadystatechange=function(){
     if (xmlhttp.readyState==4 && xmlhttp.status == 200)
       {
@@ -48,7 +50,32 @@ xmlhttp.onreadystatechange=function(){
 xmlhttp.open("GET",url,true);
 xmlhttp.send(null);
 }
-*/
+
+function statToggle() {
+  if (xmlhttp==null)
+  {
+        alert ("Your browser does not support AJAX!");
+        return;
+  }
+  var st=document.getElementById("log");
+  if(st.innerHTML=="Go Offline"){
+    var url="php/logoutstat.php";
+    st.innerHTML="Go Online";
+  }
+  else{
+    var url="php/loginstat.php";
+    st.innerHTML="Go Offline";
+  }
+xmlhttp.onreadystatechange=function(){
+if (xmlhttp.readyState==4 && xmlhttp.status == 200)
+  {
+
+  }
+}
+xmlhttp.open("GET",url,true);
+xmlhttp.send(null);
+}
+
 
 var objDiv = document.getElementById("message_div");
 

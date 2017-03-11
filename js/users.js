@@ -15,6 +15,23 @@ function GetXmlHttpObject()
     return null;
 }
 
+function loadin()
+{
+      if (xmlhttp==null)
+      {
+            alert ("Your browser does not support AJAX!");
+            return;
+      }
+var url="php/loginstat.php";
+xmlhttp.onreadystatechange=function(){
+    if (xmlhttp.readyState==4 && xmlhttp.status == 200)
+      {
+
+      }
+}
+xmlhttp.open("GET",url,true);
+xmlhttp.send(null);
+}
 
 function userlist() {
 
@@ -29,6 +46,7 @@ xmlhttp.onreadystatechange=function(){
 if (xmlhttp.readyState==4 && xmlhttp.status == 200)
   {
     var retrieved = JSON.parse(xmlhttp.responseText);
+    loadin();
     disp(retrieved);
   }
 }
@@ -43,9 +61,9 @@ document.getElementById("but_part").style.display="none";
 function disp(x) {
 var tot=0;
   for(var i=0;i<x.length;i=i+4){
-    var bg="red";
+    var bg="#E94646";
 if(x[i+2]=="1"){
-  bg="green";
+  bg="#46E987";
 }
 tot++;
   var e=document.createElement("div");
@@ -71,37 +89,12 @@ tot++;
   localStorage.setItem("total",tot);
 }
 
-/*function disp(x) {
-var tot=0;
-  for(var i=0;i<x.length;i=i+4){
-    var bg="red";
-if(x[i+2]=="1"){
-  bg="green";
-}
-tot++;
-  var e=document.createElement("div");
-  e.setAttribute("class","row");
-  e.setAttribute("onclick","choose("+x[i+3]+");");
-  var userid="user".concat(x[i+3]);
-  e.innerHTML='<div id="profile" class="col-lg-12">\
-                <div class="row" id="">\
-                  <div id="profileimg" class="col-lg-3" style="background-image:url(images/'+x[i+1]+');" ></div>\
-                  <div class="col-lg-4 "  ><h4>'+x[i]+'</h4></div>\
-                  <div class="col-lg-1 status" id="'+userid+'" style="background-color:'+bg+';"></div>\
-                  <div class="col-lg-1" id="count">0</div>\
-                  <div class="col-lg-2 " id="typing"><i>typing...</i></div>\
-                  <div class="col-lg-1 block"><button onclick="block('+x[i+3]+');">b</button></div>\
-                </div>\
-              </div>';
-  document.getElementById("users").appendChild(e);
-  }
-  localStorage.setItem("total",tot);
-}
-*/
+
 
 function choose(n) {
 
-  document.getElementById("mes_ul").innerHTML="";
+  var mes=document.getElementById("mes_ul");
+  mes.innerHTML="";
   document.getElementById("but_part").style.display="inline";
 
   localStorage.setItem("to_id",n);
@@ -112,7 +105,15 @@ function choose(n) {
   if (xmlhttp.readyState==4 && xmlhttp.status == 200)
     {
       var retrieved = JSON.parse(xmlhttp.responseText);
-      msgdisp(retrieved);
+      if(retrieved.length == 0){
+        mes.innerHTML='<center><span id="sendicon" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"style="font-size:100px;margin-top:220px"></span>\
+        <h3>Start Conversation</h3></center>';
+      }
+      else{
+        msgdisp(retrieved);
+        setInterval(relo,1000);
+      }
+
     }
   }
   xmlhttp.open("POST",url,true);
@@ -150,57 +151,6 @@ function msgdisp(z) {
 }
 
 
-
-
-setInterval(function() {
-  var n=localStorage.getItem("to_id");
-  var last=localStorage.getItem("last");
-  var url="php/msgcheck.php";
-  var parameters="to="+n+"&last="+last;
-  xmlhttp.onreadystatechange=function(){
-  if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-    {
-      var r = JSON.parse(xmlhttp.responseText);
-      if(r==0){
-      }
-      else{
-              msgupdate(r);
-      }
-        }
-        }
-  xmlhttp.open("POST",url,false);
-  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send(parameters);
-
-},1000);
-
-function msgupdate(z) {
-         for(var i=0;i<z.length;i++){
-          var e=document.createElement("li");
-          e.innerHTML="<span class='left'>"+z[i]+"</span><div class='clear'></div>";
-          document.getElementById("mes_ul").appendChild(e);
-        }
-        objDiv.scrollTop = objDiv.scrollHeight;
-        var to_id=localStorage.getItem("to_id");
-        var url="php/timecheck.php";
-        url=url+"?to="+to_id;
-        xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status == 200)
-          {
-        var t=xmlhttp.responseText;
-        //alert(t);
-        localStorage.setItem("last",t);
-          }
-        }
-        xmlhttp.open("GET",url,false);
-        xmlhttp.send(null);
-
-
-
-}
-
-
-
 setInterval(function() {
   var url="php/statuscheck.php";
   var parameters="";
@@ -223,10 +173,58 @@ function status(v) {
   for(var i=0;i<v.length;i=i+2){
   var userid="user".concat(v[i]);
   var e=document.getElementById(userid);
-  var bg="green";
+  var bg="#46E987";
   if(v[i+1]==0){
-     bg="red";
+     bg="#E94646";
   }
   e.style.backgroundColor=bg;
 }
+}
+
+function relo() {
+  var n=localStorage.getItem("to_id");
+  var last=localStorage.getItem("last");
+  var url="php/msgcheck.php";
+  var parameters="to="+n+"&last="+last;
+  xmlhttp.onreadystatechange=function(){
+  if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+    {
+
+      var r = JSON.parse(xmlhttp.responseText);
+      if(r==0){
+        //console.log("no new messages"+r.length);
+      }
+      else{
+        //console.log("new messages"+r.length);
+        msgupdate(r);
+
+      }
+        }
+        }
+  xmlhttp.open("POST",url,false);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send(parameters);
+
+}
+
+function msgupdate(z) {
+         for(var i=0;i<z.length;i++){
+          var e=document.createElement("li");
+          e.innerHTML="<span class='left'>"+z[i]+"</span><div class='clear'></div>";
+          document.getElementById("mes_ul").appendChild(e);
+        }
+        objDiv.scrollTop = objDiv.scrollHeight;
+        var to_id=localStorage.getItem("to_id");
+        var url="php/timecheck.php";
+        url=url+"?to="+to_id;
+        xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status == 200)
+          {
+        var t=xmlhttp.responseText;
+        //console.log(t);
+        localStorage.setItem("last",t);
+          }
+        }
+        xmlhttp.open("GET",url,false);
+        xmlhttp.send(null);
 }
