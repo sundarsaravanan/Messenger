@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pro=$_SESSION['profile'];
+$id=$_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html lang="">
@@ -20,7 +21,7 @@ $pro=$_SESSION['profile'];
     <script type="text/javascript" src="js/others.js" ></script>
 
 </head>
-<body onload="userlist();" onbeforeunload="loadoff()" style="background-color:#71716F">
+<body onload="userlist(<?php echo $id;?>);" onbeforeunload="loadoff()" style="background-color:#71716F">
   <div class="navbar navbar-default ">
       <div class="container">
         <div class="navbar-header">
@@ -54,29 +55,13 @@ $pro=$_SESSION['profile'];
         <div class="col-lg-3 col-lg-offset-1" id="user_slot">
           <div id="users"></div>
 
-
-          <!--<div class="row">
-            <div id="profile"class="col-lg-12">
-              <div class="row" id="cont">
-                <div id="profileimg" class="col-lg-3"></div>
-                <div class="col-lg-9">
-                  <div class="row">
-                    <h4>S.Sundar</h4>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12 status"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>-->
 </div>
 
 
         <div class="col-lg-6 col-lg-offset-1" id="msg_slot">
 
               <div class="row" id="msg_box">
-                
+
                   <div id="message_div" class="col-lg-12 main_area">
 
 
@@ -88,7 +73,7 @@ $pro=$_SESSION['profile'];
                   </div>
               </div>
               <div class="row" id="but_part">
-                  <input type="text" id="message" class="col-lg-11" placeholder="New Message...">
+                  <input type="text" id="message" class="col-lg-11" placeholder="New Message..." onkeydown="typing();">
                   <button type="submit" id="msg_sub" onclick="new_message();">
                   <span id="sendicon" class="glyphicon glyphicon-send" aria-hidden="true" style="font-size:30px;"></span>
                   </button>

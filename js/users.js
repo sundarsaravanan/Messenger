@@ -33,7 +33,8 @@ xmlhttp.open("GET",url,true);
 xmlhttp.send(null);
 }
 
-function userlist() {
+function userlist(id) {
+  localStorage.setItem("id",id);
 
   if (xmlhttp==null)
   {
@@ -70,12 +71,18 @@ tot++;
   e.setAttribute("class","row");
   e.setAttribute("onclick","choose("+x[i+3]+");");
   var userid="user".concat(x[i+3]);
+  var typeid="type".concat(x[i+3]);
   e.innerHTML='<div id="profile"class="col-lg-12">\
     <div class="row" id="cont">\
     <div id="profileimg" class="col-lg-3" style="background-image:url(./php/uploads/'+x[i+1]+');" ></div>\
       <div class="col-lg-9">\
         <div class="row">\
-          <h4>'+x[i]+'</h4>\
+        <div class="col-lg-6">\
+          <center><h4>'+x[i]+'</h4></center>\
+        </div>\
+        <div class="col-lg-6">\
+          <div ><h5><i id="'+typeid+'"></i></h5></div>\
+        </div>\
         </div>\
         <div class="row">\
           <div class="col-lg-12 status" id="'+userid+'" style="background-color:'+bg+';"></div>\
@@ -112,6 +119,7 @@ function choose(n) {
       else{
         msgdisp(retrieved);
         setInterval(relo,1000);
+
       }
 
     }
@@ -189,19 +197,17 @@ function relo() {
   xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
     {
-
+console.log("checking message");
       var r = JSON.parse(xmlhttp.responseText);
       if(r==0){
-        //console.log("no new messages"+r.length);
       }
       else{
-        //console.log("new messages"+r.length);
         msgupdate(r);
 
       }
         }
         }
-  xmlhttp.open("POST",url,false);
+  xmlhttp.open("POST",url,true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(parameters);
 
@@ -228,3 +234,43 @@ function msgupdate(z) {
         xmlhttp.open("GET",url,false);
         xmlhttp.send(null);
 }
+
+
+setInterval(function () {
+  var url="php/typecheck.php";
+  xmlhttp.onreadystatechange=function(){
+  if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+    {
+
+      var r = JSON.parse(xmlhttp.responseText);
+      updateTyping(r);
+        }
+        }
+  xmlhttp.open("POST",url,true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send(null);
+
+},1000);
+
+
+function updateTyping(r) {
+  var total=localStorage.getItem("total");
+  var from=localStorage.getItem("id");
+  total=Number(total);
+  var f=Number(from);
+  for(var i=1;i<=total+1;i++){
+      if(i!=f){
+        if (r.indexOf(String(i)) > -1) {
+          var typeid="type".concat(i);
+          var e=document.getElementById(typeid);
+          e.innerHTML="typing...";
+          e.style.visibility="visible";
+        }
+        else{
+          var typeid="type".concat(i);
+          var e=document.getElementById(typeid);
+          e.style.visibility="hidden";
+        }
+      }
+    }
+  }
