@@ -1,5 +1,6 @@
 var xmlhttp;
 xmlhttp=GetXmlHttpObject();
+
 function GetXmlHttpObject()
 {
     if (window.XMLHttpRequest)
@@ -13,14 +14,16 @@ function GetXmlHttpObject()
     return null;
 }
 
+
+
 function logoff()
 {
+      localStorage.clear();
       if (xmlhttp==null)
       {
             alert ("Your browser does not support AJAX!");
             return;
       }
-      localStorage.clear();
 var url="php/logout.php";
 xmlhttp.onreadystatechange=function(){
     if (xmlhttp.readyState==4 && xmlhttp.status == 200)
@@ -35,11 +38,12 @@ window.location="index.html";
 
 function loadoff()
 {
-      if (xmlhttp==null)
-      {
-            alert ("Your browser does not support AJAX!");
-            return;
-      }
+  if (xmlhttp==null)
+  {
+        alert ("Your browser does not support AJAX!");
+        return;
+  }
+
 var url="php/logoutstat.php";
 xmlhttp.onreadystatechange=function(){
     if (xmlhttp.readyState==4 && xmlhttp.status == 200)
@@ -75,18 +79,3 @@ if (xmlhttp.readyState==4 && xmlhttp.status == 200)
 xmlhttp.open("GET",url,true);
 xmlhttp.send(null);
 }
-
-
-var objDiv = document.getElementById("message_div");
-
-objDiv.scrollTop = objDiv.scrollHeight;
-
-document.getElementById("message")
-    .addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode == 13) {
-        document.getElementById("msg_sub").click();
-        document.getElementById("message").value="";
-
-    }
-});

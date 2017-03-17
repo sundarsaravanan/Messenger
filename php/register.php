@@ -1,6 +1,6 @@
-<?php
+<?php 
 session_start();
-
+if(isset($_SESSION["id"])){
 	include_once("dbconnect.php");
 
 
@@ -32,9 +32,8 @@ if (!empty($_POST['name']) && !empty($_POST['pass']))
 				 header("Location:../upload.html");
 }
 }
-
-
-
-
-
-?>
+}
+else {
+	header("Location: ../index.html");
+}
+ ?>

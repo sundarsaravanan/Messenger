@@ -1,7 +1,13 @@
 <?php
 session_start();
+if(isset($_SESSION["id"])){
+
 $pro=$_SESSION['profile'];
 $id=$_SESSION['id'];
+}
+else{
+header("Location: index.html");
+}
 ?>
 <!DOCTYPE html>
 <html lang="">

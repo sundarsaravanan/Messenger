@@ -1,6 +1,4 @@
 var xmlhttp;
-var objDiv = document.getElementById("message_div");
-
 xmlhttp=GetXmlHttpObject();
 function GetXmlHttpObject()
 {
@@ -15,18 +13,20 @@ function GetXmlHttpObject()
     return null;
 }
 
+
+
 function loadin()
 {
-      if (xmlhttp==null)
-      {
-            alert ("Your browser does not support AJAX!");
-            return;
-      }
+  if (xmlhttp==null)
+  {
+        alert ("Your browser does not support AJAX!");
+        return;
+  }
+
 var url="php/loginstat.php";
 xmlhttp.onreadystatechange=function(){
     if (xmlhttp.readyState==4 && xmlhttp.status == 200)
       {
-
       }
 }
 xmlhttp.open("GET",url,true);
@@ -34,13 +34,12 @@ xmlhttp.send(null);
 }
 
 function userlist(id) {
-  localStorage.setItem("id",id);
-
   if (xmlhttp==null)
   {
         alert ("Your browser does not support AJAX!");
         return;
   }
+  localStorage.setItem("id",id);
 var url="php/userlist.php";
 var parameters="";
 xmlhttp.onreadystatechange=function(){
@@ -54,12 +53,12 @@ if (xmlhttp.readyState==4 && xmlhttp.status == 200)
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(parameters);
-
 document.getElementById("but_part").style.display="none";
 }
 
 
 function disp(x) {
+
 var tot=0;
   for(var i=0;i<x.length;i=i+4){
     var bg="#E94646";
@@ -106,6 +105,25 @@ function choose(n) {
 
   localStorage.setItem("to_id",n);
 
+  var objDiv = document.getElementById("message_div");
+
+  objDiv.scrollTop = objDiv.scrollHeight;
+
+  document.getElementById("message")
+      .addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode == 13) {
+          document.getElementById("msg_sub").click();
+          document.getElementById("message").value="";
+
+      }
+  });
+  if (xmlhttp==null)
+  {
+        alert ("Your browser does not support AJAX!");
+        return 0;
+  }
+
   var url="php/messagelist.php";
   var parameters="to="+n;
   xmlhttp.onreadystatechange=function(){
@@ -127,6 +145,7 @@ function choose(n) {
   xmlhttp.open("POST",url,true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(parameters);
+
 }
 
 
@@ -137,11 +156,14 @@ function msgdisp(z) {
             if(z[i]==to_id){
               side="left";
             }
-
-
           var e=document.createElement("li");
           e.innerHTML="<span class='"+side+"'>"+z[i+2]+"</span><div class='clear'></div>";
           document.getElementById("mes_ul").appendChild(e);
+          }
+          if (xmlhttp==null)
+          {
+                alert ("Your browser does not support AJAX!");
+                return;
           }
 
         var url="php/timecheck.php";
@@ -160,20 +182,24 @@ function msgdisp(z) {
 
 
 setInterval(function() {
+
+  if (xmlhttp==null)
+  {
+        alert ("Your browser does not support AJAX!");
+        return;
+  }
   var url="php/statuscheck.php";
-  var parameters="";
   xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState==4 && xmlhttp.status == 200)
     {
       var r = JSON.parse(xmlhttp.responseText);
-status(r);
-
+      //alert(r);
+      //status(r);
   }
   }
   xmlhttp.open("POST",url,true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send(parameters);
-
+  xmlhttp.send(null);
 },1000);
 
 
@@ -192,6 +218,11 @@ function status(v) {
 function relo() {
   var n=localStorage.getItem("to_id");
   var last=localStorage.getItem("last");
+  if (xmlhttp==null)
+  {
+        alert ("Your browser does not support AJAX!");
+        return;
+  }
   var url="php/msgcheck.php";
   var parameters="to="+n+"&last="+last;
   xmlhttp.onreadystatechange=function(){
@@ -220,6 +251,11 @@ function msgupdate(z) {
           document.getElementById("mes_ul").appendChild(e);
         }
         objDiv.scrollTop = objDiv.scrollHeight;
+        if (xmlhttp==null)
+        {
+              alert ("Your browser does not support AJAX!");
+              return;
+        }
         var to_id=localStorage.getItem("to_id");
         var url="php/timecheck.php";
         url=url+"?to="+to_id;
@@ -237,6 +273,11 @@ function msgupdate(z) {
 
 
 setInterval(function () {
+  if (xmlhttp==null)
+  {
+        alert ("Your browser does not support AJAX!");
+        return;
+  }
   var url="php/typecheck.php";
   xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
@@ -256,6 +297,7 @@ setInterval(function () {
 function updateTyping(r) {
   var total=localStorage.getItem("total");
   var from=localStorage.getItem("id");
+
   total=Number(total);
   var f=Number(from);
   for(var i=1;i<=total+1;i++){

@@ -1,5 +1,6 @@
 <?php
-  session_start();
+session_start();
+if(isset($_SESSION["id"])){
   include_once("dbconnect.php");
   $id=$_SESSION['id'];
   $to=$_POST['to'];
@@ -22,4 +23,8 @@
 	echo json_encode($userlist);
   }
   mysqli_close($dbcon);
-?>
+}
+else {
+	header("Location: ../index.html");
+}
+ ?>

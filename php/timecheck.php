@@ -1,5 +1,6 @@
-<?php
+<?php 
 session_start();
+if(isset($_SESSION["id"])){
 	include_once("dbconnect.php");
   $id=$_SESSION['id'];
   $to=$_GET['to'];
@@ -8,4 +9,8 @@ session_start();
   $row = mysqli_fetch_row($query);
   echo $row[0];
 	mysqli_close($dbcon);
-?>
+}
+else {
+	header("Location: ../index.html");
+}
+ ?>

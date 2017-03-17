@@ -1,5 +1,6 @@
-<?php
+<?php 
 session_start();
+if(isset($_SESSION["id"])){
 	include_once("dbconnect.php");
   $id=$_SESSION['id'];
     $sql = "SELECT username,profilepic,status,id FROM users where NOT id = $id ";
@@ -21,4 +22,8 @@ session_start();
 echo json_encode($userlist);
 
 		mysqli_close($dbcon);
-?>
+}
+else {
+	header("Location: ../index.html");
+}
+ ?>

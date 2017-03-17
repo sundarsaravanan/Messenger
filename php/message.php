@@ -1,5 +1,6 @@
-<?php
+<?php 
 session_start();
+if(isset($_SESSION["id"])){
 	include_once("dbconnect.php");
   $t=time();
 	$msg=$_POST['msg'];
@@ -12,4 +13,8 @@ session_start();
 			$result = mysqli_query($dbcon, $query)
 			or die('Error querying database.');
 			mysqli_close($dbcon);
-?>
+}
+else {
+	header("Location: ../index.html");
+}
+ ?>

@@ -12,3 +12,9 @@ function GetXmlHttpObject()
     }
     return null;
 }
+
+if (xmlhttp==null)
+{
+      alert ("Your browser does not support AJAX!");
+      return;
+}

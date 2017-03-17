@@ -13,6 +13,8 @@ function GetXmlHttpObject()
     return null;
 }
 
+
+
 function new_message() {
   var msg=document.getElementById("message").value;
   var to_id=localStorage.getItem("to_id");
@@ -25,7 +27,6 @@ function new_message() {
   e.innerHTML="<span class='right'>"+msg+"</span>\
   <div class='clear'></div>";
   document.getElementById("mes_ul").appendChild(e);
-
   if (xmlhttp==null)
   {
         alert ("Your browser does not support AJAX!");

@@ -29,8 +29,9 @@ if (!empty($_POST['sign_name'])) {
 		$result = mysqli_query($dbcon, $query);
 		header("Location: ../home.php");
 	}
-	else
+	else{
 	header("Location: ../index.html");
+}
 }
 
 ?>
