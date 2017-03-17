@@ -1,59 +1,41 @@
-var xmlhttp;
+var xmlhttp,url,parameters;
 xmlhttp=GetXmlHttpObject();
 function GetXmlHttpObject()
 {
     if (window.XMLHttpRequest)
-    {
        return new XMLHttpRequest();
-    }
     if (window.ActiveXObject)
-    {
        return new ActiveXObject("Microsoft.XMLHTTP");
-    }
     return null;
 }
-
-
-
 function loadin()
 {
   if (xmlhttp==null)
-  {
-        alert ("Your browser does not support AJAX!");
-        return;
-  }
-
-var url="php/loginstat.php";
-xmlhttp.onreadystatechange=function(){
-    if (xmlhttp.readyState==4 && xmlhttp.status == 200)
-      {
-      }
-}
-xmlhttp.open("GET",url,true);
-xmlhttp.send(null);
+      return;
+  url="php/status.php";
+  url=url+"?status=1";
+  xmlhttp.open("GET",url,true);
+  xmlhttp.send(null);
 }
 
 function userlist(id) {
   if (xmlhttp==null)
-  {
-        alert ("Your browser does not support AJAX!");
-        return;
-  }
+    return;
   localStorage.setItem("id",id);
-var url="php/userlist.php";
-var parameters="";
-xmlhttp.onreadystatechange=function(){
-if (xmlhttp.readyState==4 && xmlhttp.status == 200)
-  {
-    var retrieved = JSON.parse(xmlhttp.responseText);
-    loadin();
-    disp(retrieved);
+  url="php/userlist.php";
+  xmlhttp.onreadystatechange=function(){
+    if (xmlhttp.readyState==4 && xmlhttp.status == 200)
+    {
+      var retrieved = JSON.parse(xmlhttp.responseText);
+      loadin();
+      disp(retrieved);
+    }
   }
-}
-xmlhttp.open("POST",url,true);
-xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send(parameters);
-document.getElementById("but_part").style.display="none";
+  xmlhttp.open("POST",url,true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send(null);
+  document.getElementById("but_part").style.display="none";
+  localStorage.setItem("status",1);
 }
 
 
@@ -62,70 +44,57 @@ function disp(x) {
 var tot=0;
   for(var i=0;i<x.length;i=i+4){
     var bg="#E94646";
-if(x[i+2]=="1"){
-  bg="#46E987";
-}
-tot++;
-  var e=document.createElement("div");
-  e.setAttribute("class","row");
-  e.setAttribute("onclick","choose("+x[i+3]+");");
-  var userid="user".concat(x[i+3]);
-  var typeid="type".concat(x[i+3]);
-  e.innerHTML='<div id="profile"class="col-lg-12">\
-    <div class="row" id="cont">\
-    <div id="profileimg" class="col-lg-3" style="background-image:url(./php/uploads/'+x[i+1]+');" ></div>\
-      <div class="col-lg-9">\
-        <div class="row">\
-        <div class="col-lg-6">\
-          <center><h4>'+x[i]+'</h4></center>\
-        </div>\
-        <div class="col-lg-6">\
-          <div ><h5><i id="'+typeid+'"></i></h5></div>\
-        </div>\
-        </div>\
-        <div class="row">\
-          <div class="col-lg-12 status" id="'+userid+'" style="background-color:'+bg+';"></div>\
+      if(x[i+2]=="1"){
+          bg="#46E987";
+        }
+    tot++;
+    var e=document.createElement("div");
+    e.setAttribute("class","row");
+    e.setAttribute("onclick","choose("+x[i+3]+");");
+    var userid="user".concat(x[i+3]);
+    var typeid="type".concat(x[i+3]);
+    e.innerHTML='<div id="profile"class="col-lg-12">\
+      <div class="row" id="cont">\
+      <div id="profileimg" class="col-lg-3" style="background-image:url(./php/uploads/'+x[i+1]+');" ></div>\
+        <div class="col-lg-9">\
+          <div class="row">\
+          <div class="col-lg-6">\
+            <center><h4>'+x[i]+'</h4></center>\
+          </div>\
+          <div class="col-lg-6">\
+            <div ><h5><i id="'+typeid+'"></i></h5></div>\
+          </div>\
+          </div>\
+          <div class="row">\
+            <div class="col-lg-12 status" id="'+userid+'" style="background-color:'+bg+';"></div>\
+          </div>\
         </div>\
       </div>\
-    </div>\
-  </div>';
-
-  document.getElementById("users").appendChild(e);
+    </div>';
+    document.getElementById("users").appendChild(e);
   }
   localStorage.setItem("total",tot);
 }
 
-
-
 function choose(n) {
-
   var mes=document.getElementById("mes_ul");
   mes.innerHTML="";
   document.getElementById("but_part").style.display="inline";
-
   localStorage.setItem("to_id",n);
-
   var objDiv = document.getElementById("message_div");
-
   objDiv.scrollTop = objDiv.scrollHeight;
-
   document.getElementById("message")
       .addEventListener("keyup", function(event) {
       event.preventDefault();
       if (event.keyCode == 13) {
           document.getElementById("msg_sub").click();
           document.getElementById("message").value="";
-
       }
   });
   if (xmlhttp==null)
-  {
-        alert ("Your browser does not support AJAX!");
-        return 0;
-  }
-
-  var url="php/messagelist.php";
-  var parameters="to="+n;
+      return;
+  url="php/messagelist.php";
+  parameters="to="+n;
   xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState==4 && xmlhttp.status == 200)
     {
@@ -136,8 +105,7 @@ function choose(n) {
       }
       else{
         msgdisp(retrieved);
-        setInterval(relo,1000);
-
+        //setInterval(relo,1000);
       }
 
     }
@@ -161,10 +129,7 @@ function msgdisp(z) {
           document.getElementById("mes_ul").appendChild(e);
           }
           if (xmlhttp==null)
-          {
-                alert ("Your browser does not support AJAX!");
-                return;
-          }
+              return;
 
         var url="php/timecheck.php";
         url=url+"?to="+to_id;
@@ -181,7 +146,7 @@ function msgdisp(z) {
 }
 
 
-setInterval(function() {
+/*setInterval(function() {
 
   if (xmlhttp==null)
   {
@@ -200,7 +165,7 @@ setInterval(function() {
   xmlhttp.open("POST",url,true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(null);
-},1000);
+},1000);*/
 
 
 function status(v) {
@@ -215,7 +180,7 @@ function status(v) {
 }
 }
 
-function relo() {
+/*function relo() {
   var n=localStorage.getItem("to_id");
   var last=localStorage.getItem("last");
   if (xmlhttp==null)
@@ -242,7 +207,7 @@ console.log("checking message");
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(parameters);
 
-}
+}*/
 
 function msgupdate(z) {
          for(var i=0;i<z.length;i++){
@@ -252,10 +217,7 @@ function msgupdate(z) {
         }
         objDiv.scrollTop = objDiv.scrollHeight;
         if (xmlhttp==null)
-        {
-              alert ("Your browser does not support AJAX!");
-              return;
-        }
+            return;
         var to_id=localStorage.getItem("to_id");
         var url="php/timecheck.php";
         url=url+"?to="+to_id;
@@ -272,7 +234,7 @@ function msgupdate(z) {
 }
 
 
-setInterval(function () {
+/*setInterval(function () {
   if (xmlhttp==null)
   {
         alert ("Your browser does not support AJAX!");
@@ -316,3 +278,4 @@ function updateTyping(r) {
       }
     }
   }
+*/

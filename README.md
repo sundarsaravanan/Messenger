@@ -1,4 +1,4 @@
-# Chat Application
+# Messenger
 
 Always thought of implementing a chat application.
 
