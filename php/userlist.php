@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if(isset($_SESSION["id"])){
 	include_once("dbconnect.php");
@@ -15,9 +15,6 @@ if(isset($_SESSION["id"])){
      array_push($userlist,$row[1]);
      array_push($userlist,$row[2]);
 		 array_push($userlist,$row[3]);
-
-
-
 	}
 echo json_encode($userlist);
 

@@ -34,26 +34,6 @@ function new_message() {
   objDiv.scrollTop = objDiv.scrollHeight;
 }
 
-/*function new_message() {
-  var msg=document.getElementById("message").value;
-  to_id=localStorage.getItem("to_id");
-  if(msg==''){
-    return false;
-  }
-  var e=document.createElement("li");
-  e.innerHTML="<span class='right'>"+msg+"</span>\
-  <div class='clear'></div>";
-  document.getElementById("mes_ul").appendChild(e);
-  if (xmlhttp==null)
-        return;
-  url="php/message.php";
-  parameters="msg="+msg+"&to="+to_id;
-  xmlhttp.open("POST",url,true);
-  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send(parameters);
-  var objDiv = document.getElementById("message_div");
-  objDiv.scrollTop = objDiv.scrollHeight;
-}*/
 /*function typing(){
   set();
   setTimeout(function () {

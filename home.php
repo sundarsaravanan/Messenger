@@ -1,7 +1,6 @@
 <?php
 session_start();
 if(isset($_SESSION["id"])){
-
 $pro=$_SESSION['profile'];
 $id=$_SESSION['id'];
 }
@@ -40,8 +39,6 @@ header("Location: index.html");
         </div>
 
         <div class="navbar-collapse collapse" id="navbar-main">
-
-
           <ul class="nav navbar-nav navbar-right">
             <li onclick="statToggle();"><a id="log">Go Offline</a></li>
             <li onclick="window.location='upload.html'"><a>Settings</a></li>
@@ -50,29 +47,19 @@ header("Location: index.html");
                 <div id="profileimg" class="col-lg-3" style="margin-left:20px;background-image:url(./php/uploads/<?php echo $pro;?>);"></div>
           </li>
           </ul>
-
         </div>
       </div>
     </div>
 
     <div class="container-fluid" >
-
       <div class="row">
         <div class="col-lg-3 col-lg-offset-1" id="user_slot">
           <div id="users"></div>
-
-</div>
-
-
+        </div>
         <div class="col-lg-6 col-lg-offset-1" id="msg_slot">
-
               <div class="row" id="msg_box">
-
                   <div id="message_div" class="col-lg-12 main_area">
-
-
                       <ul id="mes_ul">
-
                         <center><span id="sendicon" class="glyphicon glyphicon-user" aria-hidden="true"style="font-size:100px;margin-top:220px"></span>
                         <h3>Choose User</h3></center>
                     </ul>
@@ -88,7 +75,6 @@ header("Location: index.html");
       </div>
     </div>
     <script type="text/javascript" src="js/others.js" ></script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
