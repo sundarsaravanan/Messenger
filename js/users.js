@@ -27,7 +27,6 @@ function userlist(id) {
     if (xmlhttp.readyState==4 && xmlhttp.status == 200)
     {
       var retrieved = JSON.parse(xmlhttp.responseText);
-      console.log(retrieved);
       loadin();
       disp(retrieved);
     }
