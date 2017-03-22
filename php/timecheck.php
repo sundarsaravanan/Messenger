@@ -1,9 +1,11 @@
-<?php 
+<?php
 session_start();
 if(isset($_SESSION["id"])){
 	include_once("dbconnect.php");
   $id=$_SESSION['id'];
   $to=$_GET['to'];
+	$id=2;
+	$to=1;
   $sql = "SELECT time_stamp FROM message where  from_id =$to and to_id=$id group by time_stamp desc";
 	$query = mysqli_query($dbcon, $sql);
   $row = mysqli_fetch_row($query);

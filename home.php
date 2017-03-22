@@ -66,7 +66,7 @@ header("Location: index.html");
                   </div>
               </div>
               <div class="row" id="but_part">
-                  <input type="text" id="message" class="col-lg-11" placeholder="New Message..." onkeydown="typing();">
+                  <input type="text" id="message" class="col-lg-11" placeholder="New Message..." >
                   <button type="submit" id="msg_sub" onclick="new_message();">
                   <span id="sendicon" class="glyphicon glyphicon-send" aria-hidden="true" style="font-size:30px;"></span>
                   </button>

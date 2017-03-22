@@ -17,8 +17,7 @@ if(isset($_SESSION["id"])){
 		 array_push($userlist,$row[3]);
 	}
 echo json_encode($userlist);
-
-		mysqli_close($dbcon);
+mysqli_close($dbcon);
 }
 else {
 	header("Location: ../index.html");

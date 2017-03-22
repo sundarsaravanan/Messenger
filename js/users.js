@@ -27,6 +27,7 @@ function userlist(id) {
     if (xmlhttp.readyState==4 && xmlhttp.status == 200)
     {
       var retrieved = JSON.parse(xmlhttp.responseText);
+      console.log(retrieved);
       loadin();
       disp(retrieved);
     }
@@ -142,6 +143,7 @@ function msgdisp(z) {
           e.innerHTML="<span class='"+side+"'>"+z[i+2]+"</span><div class='clear'></div>";
           document.getElementById("mes_ul").appendChild(e);
           }
+
           if (xmlhttp==null)
               return;
           var url="php/timecheck.php";
@@ -199,7 +201,6 @@ function relo() {
   xmlhttp.onreadystatechange=function(){
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
     {
-console.log("checking message");
       var r = JSON.parse(xmlhttp.responseText);
       if(r==0){
       }
@@ -220,6 +221,7 @@ function msgupdate(z) {
           e.innerHTML="<span class='left'>"+z[i]+"</span><div class='clear'></div>";
           document.getElementById("mes_ul").appendChild(e);
         }
+        var objDiv = document.getElementById("message_div");
         objDiv.scrollTop = objDiv.scrollHeight;
         if (xmlhttp==null)
             return;
@@ -229,55 +231,10 @@ function msgupdate(z) {
         xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status == 200)
           {
-        var t=xmlhttp.responseText;
-        //alert(t);
-        localStorage.setItem("last",t);
+              var t=xmlhttp.responseText;
+              localStorage.setItem("last",t);
           }
         }
-        xmlhttp.open("GET",url,false);
+        xmlhttp.open("GET",url,true);
         xmlhttp.send(null);
 }
-
-
-/*setInterval(function () {
-  if (xmlhttp==null)
-    return;
-  var url="php/typecheck.php";
-  xmlhttp.onreadystatechange=function(){
-  if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-    {
-
-      var r = JSON.parse(xmlhttp.responseText);
-      updateTyping(r);
-        }
-        }
-  xmlhttp.open("POST",url,true);
-  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send(null);
-
-},1000);
-
-
-function updateTyping(r) {
-  var total=localStorage.getItem("total");
-  var from=localStorage.getItem("id");
-
-  total=Number(total);
-  var f=Number(from);
-  for(var i=1;i<=total+1;i++){
-      if(i!=f){
-        if (r.indexOf(String(i)) > -1) {
-          var typeid="type".concat(i);
-          var e=document.getElementById(typeid);
-          e.innerHTML="typing...";
-          e.style.visibility="visible";
-        }
-        else{
-          var typeid="type".concat(i);
-          var e=document.getElementById(typeid);
-          e.style.visibility="hidden";
-        }
-      }
-    }
-  }
-*/
